@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-    <a href="">鱼鱼博客</a>
+    <a href="{% url 'blog:edit_page' %}">添加</a>
 </h1>
 {% for article in articles %}
 <a href="{% url 'blog:article' article.id %}">{{article.Title}}</a>

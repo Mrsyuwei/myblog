@@ -20,14 +20,21 @@ def articlepage(request, page_id):
     article = models.Article.objects.get(pk=page_id)
     return render(request, 'article.html', {'article': article})
 
-def edit_action(request):
+def edit_action(request,page_id):
     title=request.POST.get('title','TITLE')
     content=request.POST.get('content','CONTENT')
-    models.Article.objects.create(Title=title,Content=content)
+    if page_id=='0':
+        models.Article.objects.create(Title=title,Content=content)
+    else:
+        models.Article.objects.filter(pk=page_id).update(Title=title,Content=content)
     articles=models.Article.objects.all()
     return render(request,'index.html',{'articles': articles})
 
 def edit_page(request):
     return render(request,'edit.html')
+
+def rechange(request,page_id):
+    article=models.Article.objects.get(pk=page_id)
+    return render(request,'rechange.html',{"article":article})
 
 # Create your views here.

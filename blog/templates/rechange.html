@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>edit page</title>
+    <title>修改内容</title>
 </head>
 <body>
-<form action="{% url 'blog:edit_action' page_id=0 %}" method="post">
+<form action="{% url 'blog:edit_action' article.id %}" method="post">
     {% csrf_token %}
     <label>标题
-        <input type="text" name="title">
+        <input type="text" name="title" value="{{article.Title}}" >
     </label>
     <br/>
     <label>内容
-        <input type="text" name="content">
+        <input type="text" name="content" value="{{article.Content}}">
     </label>
     <br/>
     <input type="submit" value="提交">

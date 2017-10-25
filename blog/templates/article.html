@@ -6,10 +6,10 @@
 </head>
 <body>
 {{article.Title}}
-<br>
+<br/>
 {{article.Content}}
-<br>
-<a href="">
+<br/>
+<a href="{% url 'blog:rechange' article.id %}">
     <button>修改</button>
 </a>
 </body>
